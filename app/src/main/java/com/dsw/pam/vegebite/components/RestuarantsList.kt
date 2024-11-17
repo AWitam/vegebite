@@ -12,6 +12,7 @@ import com.dsw.pam.vegebite.domain.Restaurant
 @Composable
 fun RestaurantList(
     restaurants: List<Restaurant>,
+    onRestaurantClick: (Int) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
@@ -19,7 +20,8 @@ fun RestaurantList(
     ) {
         items(restaurants) { restaurant ->
             RestaurantCard(
-                restaurant = restaurant
+                restaurant = restaurant,
+                onClick = { onRestaurantClick(restaurant.id) }
             )
         }
     }

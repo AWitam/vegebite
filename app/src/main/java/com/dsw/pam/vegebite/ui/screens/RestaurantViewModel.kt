@@ -4,10 +4,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dsw.pam.vegebite.R
 import com.dsw.pam.vegebite.domain.Restaurant
 import com.dsw.pam.vegebite.domain.RestaurantUiState
@@ -26,8 +22,6 @@ class RestaurantViewModel : ViewModel() {
             try {
 
                 kotlinx.coroutines.delay(1000)
-
-
                 val restaurants = listOf(
                     Restaurant(
                         id = 1,
@@ -52,4 +46,7 @@ class RestaurantViewModel : ViewModel() {
         }
     }
 
+}
+fun RestaurantUiState.getRestaurant(restaurantId: Int): Restaurant? {
+    return restaurants.find { it.id == restaurantId }
 }
