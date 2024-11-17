@@ -5,7 +5,6 @@ import RestaurantViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dsw.pam.vegebite.components.ErrorMessage
 import com.dsw.pam.vegebite.components.LoadingIndicator
@@ -13,7 +12,9 @@ import com.dsw.pam.vegebite.components.RestaurantList
 
 
 @Composable
-fun RestaurantsScreen(modifier: Modifier, viewModel: RestaurantViewModel = viewModel()) {
+fun RestaurantsScreen(
+    onRestaurantClick: (Int) -> Unit, viewModel: RestaurantViewModel = viewModel()
+) {
     val uiState by viewModel.uiState.collectAsState()
 
     when {
@@ -28,6 +29,7 @@ fun RestaurantsScreen(modifier: Modifier, viewModel: RestaurantViewModel = viewM
         else -> {
             RestaurantList(
                 restaurants = uiState.restaurants,
+                onRestaurantClick = onRestaurantClick
             )
         }
     }

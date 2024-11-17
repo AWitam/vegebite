@@ -1,6 +1,7 @@
 package com.dsw.pam.vegebite.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,12 +24,16 @@ import com.dsw.pam.vegebite.domain.Restaurant
 @Composable
 fun RestaurantCard(
     restaurant: Restaurant,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable {
+                onClick()
+            },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
         ),
