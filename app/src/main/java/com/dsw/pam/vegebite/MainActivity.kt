@@ -10,9 +10,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.*
 import com.dsw.pam.vegebite.ui.theme.VegeBiteTheme
-import com.dsw.pam.vegebite.views.RestaurantsView
+import com.dsw.pam.vegebite.screens.RestaurantsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             VegeBiteTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RestaurantsView(
+                    RestaurantsScreen(
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
@@ -38,6 +37,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     VegeBiteTheme {
-        RestaurantsView(modifier = Modifier)
+        RestaurantsScreen(modifier = Modifier)
     }
 }

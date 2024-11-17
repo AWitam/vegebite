@@ -1,6 +1,5 @@
-package com.dsw.pam.vegebite.views
+package com.dsw.pam.vegebite.screens
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,7 +13,7 @@ import com.dsw.pam.vegebite.domain.Restaurant
 
 
 @Composable
-fun RestaurantsView(modifier:Modifier) {
+fun RestaurantsScreen(modifier:Modifier) {
     val restaurants = listOf(
         Restaurant(
             id = 1,
