@@ -1,4 +1,4 @@
-package com.dsw.pam.vegebite.screens
+package com.dsw.pam.vegebite.ui.screens
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize

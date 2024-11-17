@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dsw.pam.vegebite.ui.theme.VegeBiteTheme
-import com.dsw.pam.vegebite.screens.RestaurantsScreen
+import com.dsw.pam.vegebite.ui.screens.RestaurantsScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
