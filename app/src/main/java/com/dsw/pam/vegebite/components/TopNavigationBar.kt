@@ -1,6 +1,6 @@
 package com.dsw.pam.vegebite.components
 
-import RestaurantViewModel
+import com.dsw.pam.vegebite.ui.screens.RestaurantViewModel
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,12 +13,13 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.dsw.pam.vegebite.navigation.Route
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopNavigationBar(
     navController: NavHostController,
-    viewModel: RestaurantViewModel
+    viewModel: RestaurantViewModel = koinViewModel()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?:Route.Home

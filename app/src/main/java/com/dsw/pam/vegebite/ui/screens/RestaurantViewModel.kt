@@ -1,3 +1,5 @@
+package com.dsw.pam.vegebite.ui.screens
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,7 +11,7 @@ import com.dsw.pam.vegebite.domain.Restaurant
 import com.dsw.pam.vegebite.domain.RestaurantUiState
 
 
-class RestaurantViewModel : ViewModel() {
+class RestaurantViewModel() : ViewModel() {
     private val _uiState = MutableStateFlow(RestaurantUiState(isLoading = true))
     val uiState: StateFlow<RestaurantUiState> = _uiState.asStateFlow()
 

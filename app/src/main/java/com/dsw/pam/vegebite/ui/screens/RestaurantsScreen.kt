@@ -1,19 +1,16 @@
 package com.dsw.pam.vegebite.ui.screens
 
-import RestaurantViewModel
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.dsw.pam.vegebite.components.ErrorMessage
 import com.dsw.pam.vegebite.components.LoadingIndicator
 import com.dsw.pam.vegebite.components.RestaurantList
-
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RestaurantsScreen(
-    onRestaurantClick: (Int) -> Unit, viewModel: RestaurantViewModel = viewModel()
+    onRestaurantClick: (Int) -> Unit, viewModel: RestaurantViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
