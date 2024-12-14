@@ -1,6 +1,5 @@
 package com.dsw.pam.vegebite.ui.screens
 
-import RestaurantViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,17 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import getRestaurant
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RestaurantDetailsScreen(
     restaurantId: Int,
-    viewModel: RestaurantViewModel,
-    onBackClick: () -> Unit
+    viewModel: RestaurantViewModel = koinViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val restaurant = uiState.getRestaurant(restaurantId)
-
 
     Column(
         modifier = Modifier

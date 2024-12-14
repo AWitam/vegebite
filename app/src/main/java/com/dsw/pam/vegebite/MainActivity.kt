@@ -1,6 +1,5 @@
 package com.dsw.pam.vegebite
 
-import RestaurantViewModel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,7 +10,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -40,15 +38,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavHost(
-    navController: NavHostController = rememberNavController(),
-    viewModel: RestaurantViewModel = viewModel()
+    navController: NavHostController = rememberNavController()
 ) {
     Scaffold(modifier = Modifier.fillMaxSize(),
         bottomBar = {
             BottomNavigationBar(navController = navController)
         },
         topBar = {
-            TopNavigationBar(navController = navController, viewModel = viewModel)
+            TopNavigationBar(navController = navController)
         }
     ) { innerPadding ->
         NavHost(
@@ -61,7 +58,6 @@ fun AppNavHost(
                     onRestaurantClick = { restaurantId ->
                         navController.navigate(Route.RestaurantDetails(restaurantId))
                     },
-                    viewModel = viewModel
                 )
             }
 
@@ -70,9 +66,7 @@ fun AppNavHost(
                 val args = backStackEntry.toRoute<Route.RestaurantDetails>()
 
                 RestaurantDetailsScreen(
-                    restaurantId = args.restaurantId,
-                    viewModel = viewModel,
-                    onBackClick = { navController.popBackStack() }
+                    restaurantId = args.restaurantId
                 )
             }
             composable<Route.Map> {
@@ -88,8 +82,7 @@ fun AppNavHost(
 fun AppPreview() {
     VegeBiteTheme {
         RestaurantsScreen(
-            onRestaurantClick = {},
-            viewModel = viewModel()
+            onRestaurantClick = {}
         )
     }
 }
