@@ -1,11 +1,13 @@
 package com.dsw.pam.vegebite.navigation
 
+import kotlinx.serialization.Serializable
 
 
-sealed class Route(val route: String) {
-    object Home : Route("home")
-    object RestaurantDetails : Route("details/{restaurantId}") {
-        fun createRoute(restaurantId: Int) = "details/$restaurantId"
-    }
-    object Map : Route("map")
+sealed interface Route{
+    @Serializable
+    object Home : Route
+    @Serializable
+    data class RestaurantDetails(val restaurantId: Int) : Route
+    @Serializable
+    object Map : Route
 }

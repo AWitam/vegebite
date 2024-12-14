@@ -22,6 +22,7 @@ import com.dsw.pam.vegebite.ui.theme.VegeBiteTheme
 import com.dsw.pam.vegebite.ui.screens.RestaurantsScreen
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.toRoute
 import com.dsw.pam.vegebite.components.BottomNavigationBar
 import com.dsw.pam.vegebite.components.TopNavigationBar
 import com.dsw.pam.vegebite.navigation.Route
@@ -56,33 +57,29 @@ fun AppNavHost(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Route.Home.route,
+            startDestination = Route.Home,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(Route.Home.route) {
+            composable<Route.Home> {
                 RestaurantsScreen(
                     onRestaurantClick = { restaurantId ->
-                        navController.navigate(Route.RestaurantDetails.createRoute(restaurantId))
+                        navController.navigate(Route.RestaurantDetails(restaurantId))
                     },
                     viewModel = viewModel
                 )
             }
 
-            composable(
-                route = Route.RestaurantDetails.route,
-                arguments = listOf(
-                    navArgument("restaurantId") { type = NavType.IntType }
-                )
-            ) { backStackEntry ->
-                val restaurantId =
-                    backStackEntry.arguments?.getInt("restaurantId") ?: return@composable
+            composable<Route.RestaurantDetails>
+             { backStackEntry ->
+                val args = backStackEntry.toRoute<Route.RestaurantDetails>()
+
                 RestaurantDetailsScreen(
-                    restaurantId = restaurantId,
+                    restaurantId = args.restaurantId,
                     viewModel = viewModel,
                     onBackClick = { navController.popBackStack() }
                 )
             }
-            composable(Route.Map.route) {
+            composable<Route.Map> {
                 MapScreen()
             }
 

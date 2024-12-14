@@ -17,15 +17,15 @@ import com.dsw.pam.vegebite.navigation.Route
 fun BottomNavigationBar(navController: NavHostController) {
     NavigationBar {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+        val currentRoute = navBackStackEntry?.destination?:Route.Home
 
         NavigationBarItem(
             icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
             label = { Text("Home") },
-            selected = currentRoute == Route.Home.route,
+            selected = currentRoute == Route.Home,
             onClick = {
-                navController.navigate(Route.Home.route) {
-                    popUpTo(Route.Home.route) { inclusive = true }
+                navController.navigate(Route.Home) {
+                    popUpTo(Route.Home) { inclusive = true }
                 }
             }
         )
@@ -33,10 +33,10 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.LocationOn, contentDescription = "Map") },
             label = { Text("Map") },
-            selected = currentRoute == Route.Map.route,
+            selected = currentRoute == Route.Map,
             onClick = {
-                navController.navigate(Route.Map.route) {
-                    popUpTo(Route.Home.route)
+                navController.navigate(Route.Map) {
+                    popUpTo(Route.Home)
                 }
             }
         )

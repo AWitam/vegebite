@@ -21,20 +21,20 @@ fun TopNavigationBar(
     viewModel: RestaurantViewModel
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
+    val currentRoute = navBackStackEntry?.destination?:Route.Home
 
     TopAppBar(
         title = {
             Text(
                 text = when (currentRoute) {
-                    Route.Home.route -> "Restaurants"
-                    Route.Map.route -> "Map"
+                    Route.Home -> "Restaurants"
+                    Route.Map -> "Map"
                     else -> "Restaurant Details"
                 }
             )
         },
         navigationIcon = {
-            if (currentRoute != Route.Home.route && currentRoute != Route.Map.route) {
+            if (currentRoute != Route.Home && currentRoute != Route.Map) {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back")
                 }
